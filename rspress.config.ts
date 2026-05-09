@@ -1,5 +1,4 @@
 import { defineConfig } from 'rspress/config'
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   root: 'docs',
@@ -8,10 +7,6 @@ export default defineConfig({
   lang: 'zh-CN',
   icon: '/favicon.ico',
   logo: '/favicon.ico',
-
-  builderConfig: {
-    vitePlugins: [tailwindcss()],
-  },
 
   themeConfig: {
     nav: [
