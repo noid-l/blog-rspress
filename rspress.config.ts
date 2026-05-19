@@ -2,6 +2,9 @@ import { defineConfig } from 'rspress/config'
 
 export default defineConfig({
   root: 'docs',
+  markdown: {
+    mdxRs: false,
+  },
   title: '不想起名字',
   description: 'AI / Coding / Notes',
   lang: 'zh-CN',

@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react'
-import { loadPosts } from '../../lib/posts'
+import { posts } from '../../data/posts'
 import { PostCard } from './PostCard'
 
 export const TagsPage: React.FC = () => {
-  const posts = useMemo(() => loadPosts(), [])
 
   const sections = useMemo(() => {
     const tagMap = new Map<string, typeof posts>()

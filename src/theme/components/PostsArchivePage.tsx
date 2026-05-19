@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react'
-import { loadPosts } from '../../lib/posts'
+import React from 'react'
+import { posts } from '../../data/posts'
 import { PostCard } from './PostCard'
 
 export const PostsArchivePage: React.FC = () => {
-  const posts = useMemo(() => loadPosts(), [])
   const featured = posts[0]
   const archivePosts = posts.slice(1)
 
