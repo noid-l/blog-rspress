@@ -8,7 +8,7 @@
     "predev": "npm run sync-content",
     "dev": "rspress dev",
     "prebuild": "npm run sync-content",
-    "build": "rspress build",
+    "build": "node scripts/dedupe-helmet.mjs && rspress build",
     "postbuild": "node scripts/gen-og.mjs && node scripts/gen-rss.mjs && node scripts/gen-pagefind.mjs",
     "preview": "rspress preview"
   },
