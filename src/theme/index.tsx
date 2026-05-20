@@ -1,8 +1,4 @@
-import { Layout as RspressLayout } from 'rspress/theme'
 import './style.css'
 
-const Theme = () => {
-  return <RspressLayout />
-}
-
-export default Theme
+export * from '@rspress/theme-default'
+export { default } from '@rspress/theme-default'

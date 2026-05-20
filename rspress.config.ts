@@ -1,7 +1,18 @@
+import path from 'path'
 import { defineConfig } from 'rspress/config'
+import tailwindcss from '@tailwindcss/postcss'
 
 export default defineConfig({
   root: 'docs',
+  themeDir: path.join(process.cwd(), 'src/theme'),
+  builderConfig: {
+    tools: {
+      postcss: (config, { addPlugins }) => {
+        console.log('====== PostCSS config function called! ======');
+        addPlugins(tailwindcss())
+      }
+    }
+  },
   markdown: {
     mdxRs: false,
   },

@@ -13,6 +13,20 @@ export interface PostItem {
 
 export const posts: PostItem[] = [
   {
+    "title": "从零到一：在 Ubuntu 24.04 上搭建 Kubernetes v1.35 与 Rancher 管理平台",
+    "url": "/posts/2026-05-20-k8s-rancher-setup-guide",
+    "date": "2026-05-20",
+    "tags": [
+      "kubernetes",
+      "rancher",
+      "devops"
+    ],
+    "description": "在单节点 Ubuntu 服务器上，从零安装 Kubernetes v1.35 到 Rancher 容器管理平台部署的全过程，涵盖镜像加速、Ingress 优化等实战经验。",
+    "readingTime": 3,
+    "category": "运维",
+    "draft": false
+  },
+  {
     "title": "AI Agent 开发者学习路径整理",
     "url": "/posts/2026-04-14-ai-agent-learning-resources",
     "date": "2026-04-14",
