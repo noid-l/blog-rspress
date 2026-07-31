@@ -11,7 +11,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@rspress/core/types", "vite/client"]
+    "types": []
   },
   "include": ["src", "docs", "scripts"]
 }

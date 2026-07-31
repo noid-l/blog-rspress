@@ -18,7 +18,7 @@
 - [x] **Step 4: 本地启动预览 (preview) 验证**
   - [x] 启动本地预览服务器或开发服务器，使用 chrome-devtools 渲染页面并截图验证。
   - [x] 用 `evaluate_script` 检查 `.home-shell` 的 `max-width` 是否为 `1152px` (即 `72rem`，6xl) 而不再是 `none`。
-- [/] **Step 5: 提交更改以确保 Cloudflare Pages 部署生效**
-  - [ ] 提交修改的代码，并推送到远端仓库。
-  - [ ] 观察 Cloudflare Pages 部署状态。
-  - [ ] 验证线上 https://blog-rspress.myls.top/ 的首页排版。
+- [x] **Step 5: 提交更改以确保 Cloudflare Pages 部署生效**
+  - [x] 提交修改的代码，并推送到远端仓库。
+  - [x] 观察 Cloudflare Pages 部署状态。
+  - [x] 验证线上 https://blog-rspress.myls.top/ 的首页排版。

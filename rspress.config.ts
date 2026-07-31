@@ -1,6 +1,7 @@
 import path from 'path'
-import { defineConfig } from 'rspress/config'
+import { defineConfig } from '@rspress/core'
 import tailwindcss from '@tailwindcss/postcss'
+import dotenv from '@shikijs/langs/dotenv'
 
 export default defineConfig({
   root: 'docs',
@@ -14,11 +15,24 @@ export default defineConfig({
     }
   },
   markdown: {
-    mdxRs: false,
+    shiki: {
+      langs: [dotenv],
+      langAlias: {
+        env: 'dotenv',
+      },
+    },
   },
   title: '不想起名字',
   description: 'AI / Coding / Notes',
   lang: 'zh-CN',
+  i18nSource: (defaultI18n) => {
+    // Rspress 默认只提供 `zh` 文案，但本站使用 `zh-CN`，将 zh 复制为 zh-CN
+    const merged: Record<string, Record<string, string>> = {}
+    for (const [key, value] of Object.entries(defaultI18n)) {
+      merged[key] = { ...value, 'zh-CN': (value as Record<string, string>).zh }
+    }
+    return merged
+  },
   icon: '/favicon.ico',
   logo: '/favicon.ico',
 

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 基于 Rspress 的博客（React 版本）。文章源来自 `blog-content/` git submodule，通过 `scripts/copy-content.mjs` 同步到 `docs/posts/`。
 
-技术栈：Rspress ^1.47.1 + React ^18.3.1 + Tailwind CSS 4.2.4 + TypeScript 5.8.3。
+技术栈：Rspress ^2.0.18 (`@rspress/core`) + React ^18.3.1 + Tailwind CSS 4.2.4 + TypeScript 5.8.3。
 
 ## Commands
 
@@ -64,15 +64,15 @@ scripts/
 
 ### 样式系统
 
-- Tailwind CSS 4 通过 `@tailwindcss/vite` 集成
+- Tailwind CSS 4 通过 `@tailwindcss/postcss` 集成（在 `rspress.config.ts` 的 `builderConfig.tools.postcss` 中显式注册）
 - CSS 变量定义在 `style.css` 的 `:root`（浅色）和 `.dark`（深色）中
 - 与 `blog-vitepress` 共享 "Warm Editorial" 设计系统：`.post-card`、`.hero-box`、`.tag-chip` 等类名一致
 
 ## Key Dependencies
 
-- **rspress**: ^1.47.1 — 静态站点生成器
+- **@rspress/core**: ^2.0.18 — 静态站点生成器
 - **react** + **react-dom**: ^18.3.1
-- **tailwindcss** + **@tailwindcss/vite**: ^4.2.4
+- **@tailwindcss/postcss**: ^4.2.4 — PostCSS 插件（Tailwind CSS 4 由其传递依赖）
 - **pagefind**: ^1.5.2 — 静态全文搜索
 - **rss**: ^1.2.2 — RSS feed
 - **satori** + **@resvg/resvg-js**: OG 图片生成

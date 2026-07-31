@@ -8,7 +8,7 @@
     "predev": "npm run sync-content",
     "dev": "rspress dev",
     "prebuild": "npm run sync-content",
-    "build": "node scripts/dedupe-helmet.mjs && rspress build",
+    "build": "rspress build",
     "postbuild": "node scripts/gen-og.mjs && node scripts/gen-rss.mjs && node scripts/gen-pagefind.mjs",
     "preview": "rspress preview"
   },
@@ -16,15 +16,13 @@
     "gray-matter": "^4.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rspress": "^1.47.1",
+    "@rspress/core": "^2.0.18",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",
     "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/cli": "^4.2.4",
     "@tailwindcss/postcss": "^4.2.4",
-    "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^25.6.0",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
@@ -32,8 +30,7 @@
     "pagefind": "^1.5.2",
     "postcss": "^8.5.3",
     "rss": "^1.2.2",
-    "satori": "^0.26.0",
-    "tailwindcss": "^4.2.4",
+    "satori": "^0.28.2",
     "typescript": "^5.8.3"
   }
 }
