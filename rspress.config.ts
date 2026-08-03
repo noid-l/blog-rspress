@@ -5,11 +5,13 @@ import dotenv from '@shikijs/langs/dotenv'
 
 export default defineConfig({
   root: 'docs',
-  themeDir: path.join(process.cwd(), 'src/theme'),
+  themeDir: 'theme',
+  globalUIComponents: [
+    path.join(process.cwd(), 'theme/components/BackToTop.tsx'),
+  ],
   builderConfig: {
     tools: {
-      postcss: (config, { addPlugins }) => {
-        console.log('====== PostCSS config function called! ======');
+      postcss: (_config, { addPlugins }) => {
         addPlugins(tailwindcss())
       }
     }
@@ -41,7 +43,6 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '文章', link: '/posts/' },
       { text: '标签', link: '/tags' },
-      { text: '搜索', link: '/search' },
       { text: '关于', link: '/about' },
     ],
     socialLinks: [

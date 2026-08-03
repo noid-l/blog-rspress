@@ -1,0 +1,697 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Section 1 — Rspress CSS Variables (Level 1)
+   Project tokens are the source of truth; alias them into
+   the --rp-c-* family so built-in nav / sidebar / code-block
+   inherit Warm Editorial.
+   ============================================================ */
+
+:root {
+  /* Project design tokens */
+  --bg-base: #faf9f6;
+  --bg-soft: #f5f3ef;
+  --bg-mute: #edeae4;
+  --text-1: #1c1917;
+  --text-2: #57534e;
+  --text-3: #a8a29e;
+  --accent: #c2410c;
+  --accent-soft: #ea580c;
+  --accent-subtle: rgba(194, 65, 12, 0.08);
+  --border: #e7e5e4;
+  --border-strong: #d6d3d1;
+
+  --font-display: 'Playfair Display', 'Songti SC', 'SimSun', Georgia, 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+
+  --shadow-xs: 0 1px 2px rgba(28, 25, 23, 0.03);
+  --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.05), 0 1px 2px rgba(28, 25, 23, 0.03);
+  --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.06), 0 1px 3px rgba(28, 25, 23, 0.04);
+  --shadow-lg: 0 8px 24px rgba(28, 25, 23, 0.08), 0 2px 8px rgba(28, 25, 23, 0.04);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Alias into Rspress variables (light) */
+  --rp-c-bg: var(--bg-base);
+  --rp-c-bg-soft: var(--bg-soft);
+  --rp-c-bg-mute: var(--bg-mute);
+  --rp-c-text-1: var(--text-1);
+  --rp-c-text-2: var(--text-2);
+  --rp-c-text-3: var(--text-3);
+  --rp-c-divider: color-mix(in srgb, var(--text-1) 25%, transparent);
+  --rp-c-divider-light: color-mix(in srgb, var(--text-1) 12%, transparent);
+  --rp-c-link: var(--accent);
+  --rp-c-brand: var(--accent);
+  --rp-c-brand-dark: var(--accent-soft);
+  --rp-c-brand-light: var(--accent-soft);
+  --rp-c-brand-lighter: var(--accent-subtle);
+  --rp-c-brand-darker: var(--accent);
+  --rp-c-brand-tint: var(--accent-subtle);
+  --rp-c-text-code: var(--accent-soft);
+  --rp-c-text-code-bg: var(--bg-soft);
+  --rp-c-text-code-border: var(--border);
+  --rp-home-hero-secondary-color: var(--accent-soft);
+}
+
+.dark {
+  --bg-base: #0c0a09;
+  --bg-soft: #1c1917;
+  --bg-mute: #292524;
+  --text-1: #fafaf9;
+  --text-2: #a8a29e;
+  --text-3: #78716c;
+  --accent: #fb923c;
+  --accent-soft: #f97316;
+  --accent-subtle: rgba(251, 146, 60, 0.1);
+  --border: #292524;
+  --border-strong: #44403c;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  --rp-c-bg: var(--bg-base);
+  --rp-c-bg-soft: var(--bg-soft);
+  --rp-c-bg-mute: var(--bg-mute);
+  --rp-c-text-1: var(--text-1);
+  --rp-c-text-2: var(--text-2);
+  --rp-c-text-3: var(--text-3);
+  --rp-c-divider: color-mix(in srgb, var(--text-1) 25%, transparent);
+  --rp-c-divider-light: color-mix(in srgb, var(--text-1) 12%, transparent);
+  --rp-c-link: var(--accent);
+  --rp-c-brand: var(--accent);
+  --rp-c-brand-dark: var(--accent-soft);
+  --rp-c-brand-light: var(--accent-soft);
+  --rp-c-brand-lighter: var(--accent-subtle);
+  --rp-c-brand-darker: var(--accent);
+  --rp-c-brand-tint: var(--accent-subtle);
+  --rp-c-text-code: var(--accent);
+  --rp-c-text-code-bg: var(--bg-soft);
+  --rp-c-text-code-border: var(--border);
+}
+
+/* ============================================================
+   Section 2 — Base
+   ============================================================ */
+
+body {
+  background: var(--bg-base);
+  color: var(--text-1);
+  font-family: var(--font-body);
+}
+
+.rspress-doc {
+  background: var(--bg-base);
+}
+
+/* ============================================================
+   Section 3 — Rspress BEM Overrides (Level 2)
+   ============================================================ */
+
+.rp-nav,
+.rp-nav__menu {
+  background: var(--bg-base);
+}
+
+.rp-nav__link {
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.rp-nav__link:hover,
+.rp-nav__link--active {
+  color: var(--accent);
+}
+
+.rp-doc-layout__sidebar,
+.rp-doc-layout__outline {
+  background: var(--bg-base);
+}
+
+.rp-codeblock,
+.rp-codeblock__title {
+  border-color: var(--border);
+  background: var(--bg-soft);
+}
+
+/* ============================================================
+   Section 4 — Project Components (blog-*)
+   ============================================================ */
+
+.blog-shell {
+  @apply mx-auto max-w-6xl px-5 md:px-8;
+}
+
+.blog-grid {
+  @apply grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3;
+}
+
+.blog-post-card {
+  position: relative;
+  display: block;
+  @apply rounded-2xl border p-6 transition-all duration-300;
+  background: var(--bg-base);
+  border-color: var(--border);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+}
+
+.blog-post-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease-out);
+  border-radius: 0 2px 2px 0;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-strong);
+}
+
+.blog-post-card:hover::before {
+  transform: scaleY(1);
+}
+
+.blog-post-card__title {
+  @apply text-lg font-semibold leading-snug;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  transition: color 0.2s ease;
+}
+
+.blog-post-card:hover .blog-post-card__title {
+  color: var(--accent);
+}
+
+.blog-post-card__meta {
+  @apply mt-2 text-sm;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.blog-post-card__desc {
+  @apply mt-3 line-clamp-3 text-sm leading-7;
+  color: var(--text-2);
+}
+
+.blog-hero {
+  @apply rounded-2xl border px-8 py-10 md:px-10 md:py-12;
+  background: linear-gradient(135deg, var(--bg-base) 0%, var(--bg-soft) 100%);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s ease;
+}
+
+.blog-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-subtle) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.blog-hero:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-strong);
+}
+
+.blog-tag {
+  @apply inline-flex rounded-full px-3 py-1 text-xs font-medium transition-all duration-200;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  background: var(--bg-soft);
+}
+
+.blog-tag:hover {
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+
+.blog-kicker {
+  @apply text-xs font-semibold uppercase tracking-[0.2em];
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.blog-intro {
+  @apply mt-4 text-base leading-7;
+  color: var(--text-2);
+}
+
+.blog-panel {
+  @apply rounded-2xl border p-6 md:p-8;
+  background: var(--bg-base);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-panel__header {
+  @apply flex flex-wrap items-start justify-between gap-3;
+}
+
+.blog-panel__title {
+  @apply text-xl font-semibold;
+  color: var(--text-1);
+  font-family: var(--font-display);
+}
+
+.blog-panel__copy {
+  @apply mt-2 text-sm leading-6;
+  color: var(--text-3);
+}
+
+.blog-section-stack {
+  @apply space-y-8;
+}
+
+.blog-tag-section {
+  @apply rounded-2xl border p-6;
+  background: var(--bg-base);
+  border-color: var(--border);
+  box-shadow: var(--shadow-xs);
+}
+
+.blog-tag-section__header {
+  @apply flex flex-wrap items-center justify-between gap-3;
+}
+
+.blog-tag-count {
+  @apply inline-flex rounded-full px-3 py-1 text-xs font-medium;
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+.blog-category-chip {
+  @apply inline-flex rounded-full px-2 py-0.5 text-xs font-medium;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+/* Posts archive (lead card variant) */
+
+.blog-posts-lead {
+  position: relative;
+  padding-top: 1rem;
+}
+
+.blog-posts-lead__card {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--bg-soft) 82%, var(--bg-base)) 0%, var(--bg-base) 100%);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none !important;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s ease;
+}
+
+.blog-posts-lead__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border-strong));
+}
+
+.blog-posts-lead__copy {
+  min-width: 0;
+}
+
+.blog-posts-lead__meta,
+.blog-posts-lead__label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blog-posts-lead__meta {
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+.blog-posts-lead__title {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  line-height: 1.12;
+  color: var(--text-1);
+}
+
+.blog-posts-lead__desc {
+  margin-top: 1rem;
+  max-width: 44rem;
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: var(--text-2);
+}
+
+.blog-posts-lead__side {
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+  padding-top: 0.15rem;
+}
+
+.blog-posts-lead__label {
+  font-size: 0.72rem;
+  color: var(--text-3);
+}
+
+.blog-posts-lead__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.blog-posts-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+@media (min-width: 768px) {
+  .blog-posts-lead {
+    padding-top: 1.35rem;
+  }
+  .blog-posts-lead__card {
+    grid-template-columns: minmax(0, 1.7fr) minmax(15rem, 0.9fr);
+    padding: 1.85rem;
+  }
+  .blog-posts-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-posts-lead__title {
+    font-size: 1.8rem;
+  }
+}
+
+/* In-post slot container */
+
+.blog-after-doc {
+  @apply mt-12 space-y-8;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.blog-share {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.blog-share__label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-right: 0.5rem;
+}
+
+.blog-share__btn {
+  @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors;
+  color: var(--text-2);
+  background: var(--bg-soft);
+  border-color: var(--border);
+}
+
+.blog-share__btn:hover {
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+
+.blog-post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.blog-post-nav__item {
+  @apply rounded-xl border p-4 transition-colors;
+  background: var(--bg-base);
+  border-color: var(--border);
+  text-decoration: none !important;
+  color: var(--text-2);
+  display: block;
+}
+
+.blog-post-nav__item:hover {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  color: var(--accent);
+}
+
+.blog-post-nav__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.blog-post-nav__title {
+  @apply mt-1 text-sm font-medium;
+  color: var(--text-1);
+  font-family: var(--font-display);
+}
+
+.blog-post-nav__item:hover .blog-post-nav__title {
+  color: var(--accent);
+}
+
+.blog-post-nav__item--placeholder {
+  visibility: hidden;
+}
+
+.blog-post-footer {
+  @apply flex flex-wrap items-center justify-between gap-3 text-xs;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+}
+
+/* Back to top */
+
+.blog-back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-out);
+  color: var(--text-2);
+}
+
+.blog-back-to-top:hover {
+  background: var(--bg-base);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.blog-back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================================
+   Section 5 — Route-scoped (About page)
+   ============================================================ */
+
+body.route-about .rspress-doc h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-1);
+}
+
+body.route-about .rspress-doc > p:first-of-type {
+  color: var(--text-2);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 36rem;
+  margin-bottom: 2rem;
+}
+
+body.route-about .rspress-doc ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 36rem;
+}
+
+body.route-about .rspress-doc ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--text-2);
+  transition: color 0.2s ease;
+  line-height: 1.7;
+}
+
+body.route-about .rspress-doc ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0.4;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+body.route-about .rspress-doc ul li:hover {
+  color: var(--accent);
+}
+
+body.route-about .rspress-doc ul li:hover::before {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* ============================================================
+   Section 6 — Animations
+   ============================================================ */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.blog-hero {
+  animation: fade-up 0.7s var(--ease-out) both;
+}
+
+.blog-grid .blog-post-card {
+  animation: fade-up 0.5s var(--ease-out) both;
+}
+.blog-grid .blog-post-card:nth-child(1) { animation-delay: 0.05s; }
+.blog-grid .blog-post-card:nth-child(2) { animation-delay: 0.1s; }
+.blog-grid .blog-post-card:nth-child(3) { animation-delay: 0.15s; }
+.blog-grid .blog-post-card:nth-child(4) { animation-delay: 0.2s; }
+.blog-grid .blog-post-card:nth-child(5) { animation-delay: 0.25s; }
+.blog-grid .blog-post-card:nth-child(6) { animation-delay: 0.3s; }
+
+.blog-posts-grid .blog-post-card {
+  animation: fade-up 0.5s var(--ease-out) both;
+}
+.blog-posts-grid .blog-post-card:nth-child(1) { animation-delay: 0.05s; }
+.blog-posts-grid .blog-post-card:nth-child(2) { animation-delay: 0.1s; }
+.blog-posts-grid .blog-post-card:nth-child(3) { animation-delay: 0.15s; }
+.blog-posts-grid .blog-post-card:nth-child(4) { animation-delay: 0.2s; }
+.blog-posts-grid .blog-post-card:nth-child(5) { animation-delay: 0.25s; }
+.blog-posts-grid .blog-post-card:nth-child(6) { animation-delay: 0.3s; }
+.blog-posts-grid .blog-post-card:nth-child(7) { animation-delay: 0.35s; }
+.blog-posts-grid .blog-post-card:nth-child(8) { animation-delay: 0.4s; }
+
+.blog-panel,
+.blog-section-stack {
+  animation: fade-up 0.6s var(--ease-out) 0.1s both;
+}
+
+/* ============================================================
+   Section 7 — Scrollbar / Selection
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-3);
+}
+
+::selection {
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+/* ============================================================
+   Section 8 — Responsive
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .blog-hero {
+    @apply px-5 py-7;
+  }
+  .blog-panel {
+    @apply p-5;
+  }
+  .blog-tag-section {
+    padding: 1.125rem;
+  }
+  .blog-tag-section__header h2 {
+    font-size: 1.1rem;
+  }
+  .blog-section-stack > :not(:first-child) {
+    margin-top: 1.25rem;
+  }
+  .blog-shell section.mt-14 {
+    margin-top: 2.5rem;
+  }
+  .blog-post-nav {
+    grid-template-columns: 1fr;
+  }
+}
