@@ -9,24 +9,23 @@
     "dev": "rspress dev",
     "prebuild": "npm run sync-content",
     "build": "rspress build",
-    "postbuild": "node scripts/gen-rss.mjs",
     "preview": "rspress preview"
   },
   "dependencies": {
+    "@rspress/core": "^2.0.21",
     "gray-matter": "^4.0.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "@rspress/core": "^2.0.21",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@rspress/plugin-rss": "^2.0.21",
     "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "fast-glob": "^3.3.3",
     "postcss": "^8.5.26",
-    "rss": "^1.2.2",
     "typescript": "^5.8.3"
   }
 }

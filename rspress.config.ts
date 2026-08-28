@@ -1,11 +1,35 @@
 import path from 'path'
 import { defineConfig } from '@rspress/core'
+import { pluginRss } from '@rspress/plugin-rss'
 import tailwindcss from '@tailwindcss/postcss'
 import dotenv from '@shikijs/langs/dotenv'
 
 export default defineConfig({
   root: 'docs',
   themeDir: 'theme',
+  plugins: [
+    pluginRss({
+      siteUrl: 'https://www.myls.top',
+      feed: {
+        id: 'feed',
+        // 只收录 /posts/ 下的文章页，排除列表页本身和草稿
+        test: (item) =>
+          item.routePath.startsWith('/posts/') &&
+          item.routePath !== '/posts/' &&
+          !item.frontmatter.draft,
+        title: '不想起名字',
+        description: 'AI / Coding / Notes',
+        language: 'zh-CN',
+        copyright: `Copyright ${new Date().getFullYear()} Shuo`,
+        item: (item, page) => ({
+          ...item,
+          categories: (page.frontmatter.tags as string[]) ?? [],
+        }),
+        // 保持原有的 /feed.xml 输出路径和 RSS 2.0 格式
+        output: { dir: '.', filename: 'feed.xml', type: 'rss' },
+      },
+    }),
+  ],
   globalUIComponents: [
     path.join(process.cwd(), 'theme/components/BackToTop.tsx'),
   ],

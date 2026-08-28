@@ -45,7 +45,6 @@ src/
         └── BackToTop.tsx   # 回到顶部
 scripts/
 ├── copy-content.mjs        # 从 content/ 复制到 docs/
-├── gen-rss.mjs             # RSS feed 生成
 └── gen-pagefind.mjs        # Pagefind 搜索索引生成
 ```
 
@@ -58,8 +57,7 @@ scripts/
 ### 构建流程
 
 1. `prebuild`: `sync-content` 执行 `git submodule update --init --recursive` + `copy-content.mjs`
-2. `build`: Rspress 构建静态站点，输出到 `doc_build/`
-3. `postbuild`: 生成 RSS feed
+2. `build`: Rspress 构建静态站点，输出到 `doc_build/`；RSS 由 `@rspress/plugin-rss` 在构建阶段生成（`doc_build/feed.xml`）
 
 ### 样式系统
 
