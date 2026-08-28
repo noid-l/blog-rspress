@@ -51,6 +51,7 @@ export default defineConfig({
   title: '不想起名字',
   description: 'AI / Coding / Notes',
   lang: 'zh-CN',
+  llms: true,
   i18nSource: (defaultI18n) => {
     // Rspress 默认只提供 `zh` 文案，但本站使用 `zh-CN`，将 zh 复制为 zh-CN
     const merged: Record<string, Record<string, string>> = {}
