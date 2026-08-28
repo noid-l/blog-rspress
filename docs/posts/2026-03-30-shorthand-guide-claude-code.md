@@ -153,15 +153,15 @@ LSP 插件特别有用 —— 如果你不在编辑器中运行 Claude Code，La
 
 ## 键盘快捷键
 
-| 快捷键 | 功能 |
-|--------|------|
-| `Ctrl+U` | 删除整行输入 |
-| `!` | 快速执行 Bash 命令前缀 |
-| `@` | 搜索文件 |
-| `/` | 发起斜杠命令 |
-| `Shift+Enter` | 多行输入 |
-| `Tab` | 切换思考过程显示 |
-| `Esc Esc` | 中断 Claude 或恢复代码 |
+| 快捷键        | 功能                   |
+| ------------- | ---------------------- |
+| `Ctrl+U`      | 删除整行输入           |
+| `!`           | 快速执行 Bash 命令前缀 |
+| `@`           | 搜索文件               |
+| `/`           | 发起斜杠命令           |
+| `Shift+Enter` | 多行输入               |
+| `Tab`         | 切换思考过程显示       |
+| `Esc Esc`     | 中断 Claude 或恢复代码 |
 
 ## 并行工作流
 
@@ -221,9 +221,7 @@ mgrep@Mixedbread-Grep                  # 更好的搜索
     { "matcher": "Edit && .ts/.tsx", "hooks": ["tsc --noEmit"] },
     { "matcher": "Edit", "hooks": ["grep console.log 警告"] }
   ],
-  "Stop": [
-    { "matcher": "*", "hooks": ["检查修改文件中的 console.log"] }
-  ]
+  "Stop": [{ "matcher": "*", "hooks": ["检查修改文件中的 console.log"] }]
 }
 ```
 
@@ -255,6 +253,7 @@ VSCode 和 Cursor 也可以正常工作。
 ---
 
 > **相关资源**：
+>
 > - 速查指南原文：[x.com/affaanmustafa/status/2012378465664745795](https://x.com/affaanmustafa/status/2012378465664745795)
 > - 长篇指南原文：[x.com/affaanmustafa/article/2014040193557471352](https://x.com/affaanmustafa/article/2014040193557471352)
 > - GitHub 仓库：[github.com/affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)

@@ -6,13 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 基于 Rspress 的博客（React 版本）。文章源来自 `blog-content/` git submodule，通过 `scripts/copy-content.mjs` 同步到 `docs/posts/`。
 
-技术栈：Rspress ^2.0.18 (`@rspress/core`) + React ^18.3.1 + Tailwind CSS 4.2.4 + TypeScript 5.8.3。
+技术栈：Rspress ^2.0.21 (`@rspress/core`) + React ^19.2.8 + Tailwind CSS 4.2.4 + TypeScript ^5.8.3。
 
 ## Commands
 
 ```bash
 npm run dev          # 开发服务器（predev 自动 sync-content）
-npm run build        # 构建（prebuild sync-content → postbuild OG/RSS/Pagefind）
+npm run build        # 构建（prebuild sync-content → postbuild RSS）
 npm run preview      # 预览构建产物
 ```
 
@@ -45,7 +45,6 @@ src/
         └── BackToTop.tsx   # 回到顶部
 scripts/
 ├── copy-content.mjs        # 从 content/ 复制到 docs/
-├── gen-og.mjs              # OG 图片生成（satori + @resvg/resvg-js）
 ├── gen-rss.mjs             # RSS feed 生成
 └── gen-pagefind.mjs        # Pagefind 搜索索引生成
 ```
@@ -60,7 +59,7 @@ scripts/
 
 1. `prebuild`: `sync-content` 执行 `git submodule update --init --recursive` + `copy-content.mjs`
 2. `build`: Rspress 构建静态站点，输出到 `doc_build/`
-3. `postbuild`: 生成 OG 图片 → 生成 RSS feed → 生成 Pagefind 搜索索引
+3. `postbuild`: 生成 RSS feed
 
 ### 样式系统
 
@@ -70,12 +69,11 @@ scripts/
 
 ## Key Dependencies
 
-- **@rspress/core**: ^2.0.18 — 静态站点生成器
-- **react** + **react-dom**: ^18.3.1
+- **@rspress/core**: ^2.0.21 — 静态站点生成器
+- **react** + **react-dom**: ^19.2.8
 - **@tailwindcss/postcss**: ^4.2.4 — PostCSS 插件（Tailwind CSS 4 由其传递依赖）
 - **pagefind**: ^1.5.2 — 静态全文搜索
 - **rss**: ^1.2.2 — RSS feed
-- **satori** + **@resvg/resvg-js**: OG 图片生成
 - **gray-matter**: frontmatter 解析
 - **zod**: 运行时数据验证
 

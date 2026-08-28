@@ -11,7 +11,6 @@ tags:
 category: AI 开发
 description: 复盘 NavSphere 这个开发者导航站项目：技术栈、架构设计、部署方式，以及用 Codex 和 Claude Code 把一个可运行全栈项目压缩到两天内完成的真实体感。
 draft: false
-cover: /og/default.png
 ---
 
 # 用 Codex 和 Claude Code 两天做一个 Next.js + Supabase 导航站：NavSphere 项目复盘

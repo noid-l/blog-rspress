@@ -155,27 +155,39 @@ SESSION 1                          SESSION 2
 ```json
 {
   "hooks": {
-    "PreCompact": [{
-      "matcher": "*",
-      "hooks": [{
-        "type": "command",
-        "command": "~/.claude/hooks/memory-persistence/pre-compact.sh"
-      }]
-    }],
-    "SessionStart": [{
-      "matcher": "*",
-      "hooks": [{
-        "type": "command",
-        "command": "~/.claude/hooks/memory-persistence/session-start.sh"
-      }]
-    }],
-    "Stop": [{
-      "matcher": "*",
-      "hooks": [{
-        "type": "command",
-        "command": "~/.claude/hooks/memory-persistence/session-end.sh"
-      }]
-    }]
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/memory-persistence/pre-compact.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/memory-persistence/session-start.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/memory-persistence/session-end.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -415,7 +427,7 @@ root/
 **pass@k**：k 次尝试中至少有一次成功
 
 | k 值 | 通过率 |
-|------|--------|
+| ---- | ------ |
 | k=1  | 70%    |
 | k=3  | 91%    |
 | k=5  | 97%    |
@@ -425,7 +437,7 @@ k 越高 = 成功概率越高
 **pass^k**：k 次尝试必须全部成功
 
 | k 值 | 通过率 |
-|------|--------|
+| ---- | ------ |
 | k=1  | 70%    |
 | k=3  | 34%    |
 | k=5  | 17%    |

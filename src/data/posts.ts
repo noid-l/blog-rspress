@@ -40,7 +40,6 @@ export const posts: PostItem[] = [
     ],
     "description": "面向开发者的 AI Agent 学习路径，覆盖 Agent 基础、Dify 平台、LangChain/LangGraph 框架和向量数据库选型，含推荐学习顺序和最小实践路线。",
     "readingTime": 7,
-    "cover": "/og/default.png",
     "draft": false
   },
   {
@@ -55,8 +54,7 @@ export const posts: PostItem[] = [
       "AI 平台"
     ],
     "description": "梳理 Dify 1.14 的 Docker Compose 服务架构，包括核心服务、可选数据库和向量数据库的 profile 切换方式。",
-    "readingTime": 3,
-    "cover": "/og/default.png",
+    "readingTime": 4,
     "draft": false
   },
   {
@@ -72,7 +70,6 @@ export const posts: PostItem[] = [
     ],
     "description": "介绍微软开源的 MarkItDown 工具，支持将 PDF、Word、Excel、PPT 等文件转换为 Markdown，适合 AI 处理和知识库整理。",
     "readingTime": 2,
-    "cover": "/og/default.png",
     "draft": false
   },
   {
@@ -89,7 +86,6 @@ export const posts: PostItem[] = [
     ],
     "description": "复盘 NavSphere 这个开发者导航站项目：技术栈、架构设计、部署方式，以及用 Codex 和 Claude Code 把一个可运行全栈项目压缩到两天内完成的真实体感。",
     "readingTime": 12,
-    "cover": "/og/default.png",
     "category": "AI 开发",
     "draft": false
   },
@@ -134,7 +130,6 @@ export const posts: PostItem[] = [
     ],
     "description": "一套适合开发者和 AI 写作工作流的博客模板。",
     "readingTime": 1,
-    "cover": "/og/default.png",
     "draft": false
   },
   {
@@ -150,7 +145,6 @@ export const posts: PostItem[] = [
     ],
     "description": "一套更适合 AI 时代开发者的博客写作与发布方案：Obsidian 写作、Codex 辅助、VitePress 构建、ESA 部署。",
     "readingTime": 9,
-    "cover": "/og/default.png",
     "category": "工具链",
     "draft": false
   },

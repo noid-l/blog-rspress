@@ -9,7 +9,6 @@ tags:
   - AI 编码
 description: 介绍微软开源的 MarkItDown 工具，支持将 PDF、Word、Excel、PPT 等文件转换为 Markdown，适合 AI 处理和知识库整理。
 draft: false
-cover: /og/default.png
 ---
 
 # MarkItDown：微软开源的文件转 Markdown 工具
