@@ -4,6 +4,8 @@ import { pluginRss } from '@rspress/plugin-rss'
 import tailwindcss from '@tailwindcss/postcss'
 import dotenv from '@shikijs/langs/dotenv'
 
+const title = '不想起名字'
+
 export default defineConfig({
   root: 'docs',
   themeDir: 'theme',
@@ -48,7 +50,7 @@ export default defineConfig({
       },
     },
   },
-  title: '不想起名字',
+  title,
   description: 'AI / Coding / Notes',
   lang: 'zh-CN',
   llms: true,
@@ -62,10 +64,10 @@ export default defineConfig({
   },
   icon: '/favicon.ico',
   logo: '/favicon.ico',
+  logoText: title,
 
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
       { text: '文章', link: '/posts/' },
       { text: '标签', link: '/tags' },
       { text: '关于', link: '/about' },
