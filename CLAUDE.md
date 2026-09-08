@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-基于 Rspress 的博客（React 版本）。文章源来自 `blog-content/` git submodule，通过 `scripts/copy-content.mjs` 同步到 `docs/posts/`。
+基于 Rspress 的博客（React 版本）。文章直接在 `docs/posts/` 维护，`scripts/gen-posts-data.mjs` 从文章生成 `src/data/posts.ts` 数据文件。
 
 技术栈：Rspress ^2.0.21 (`@rspress/core`) + React ^19.2.8 + Tailwind CSS 4.2.4 + TypeScript ^5.8.3。
 
 ## Commands
 
 ```bash
-npm run dev          # 开发服务器（predev 自动 sync-content）
-npm run build        # 构建（prebuild sync-content → postbuild RSS）
+npm run dev          # 开发服务器（predev 自动生成文章数据）
+npm run build        # 构建（prebuild 生成文章数据 → postbuild RSS）
 npm run preview      # 预览构建产物
 ```
 
@@ -23,7 +23,7 @@ npm run preview      # 预览构建产物
 ```
 docs/
 ├── index.md                # 首页（pageType: custom，渲染 React HomePage 组件）
-├── posts/                  # 从 blog-content 同步的文章（不要直接编辑）
+├── posts/                  # 博客文章（直接在此维护）
 ├── tags.md                 # 标签页
 ├── search.md               # 搜索页
 ├── about.md                # 关于页
@@ -44,7 +44,7 @@ src/
         ├── PostFooter.tsx  # 文章底部（分享按钮等）
         └── BackToTop.tsx   # 回到顶部
 scripts/
-├── copy-content.mjs        # 从 content/ 复制到 docs/
+├── gen-posts-data.mjs      # 从 docs/posts 生成 src/data/posts.ts
 └── gen-pagefind.mjs        # Pagefind 搜索索引生成
 ```
 
@@ -56,7 +56,7 @@ scripts/
 
 ### 构建流程
 
-1. `prebuild`: `sync-content` 执行 `git submodule update --init --recursive` + `copy-content.mjs`
+1. `prebuild`: `gen-posts-data` 从 `docs/posts/` 生成 `src/data/posts.ts`
 2. `build`: Rspress 构建静态站点，输出到 `doc_build/`；RSS 由 `@rspress/plugin-rss` 在构建阶段生成（`doc_build/feed.xml`）
 
 ### 样式系统
@@ -77,8 +77,4 @@ scripts/
 
 ## Content Source
 
-文章在 `blog-content/` git submodule 中管理。**不要直接编辑 `docs/posts/`**。修改流程：
-
-1. 在 `content/posts/` 下创建/修改文章
-2. 提交到 `blog-content` 仓库
-3. 运行 `npm run sync-content` 拉取最新内容
+文章直接在 `docs/posts/` 中维护。新增文章后在 `predev`/`prebuild` 阶段会自动运行 `gen-posts-data` 重新生成 `src/data/posts.ts`，也可手动执行 `npm run gen-posts-data`。

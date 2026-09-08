@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "sync-content": "git submodule update --init --recursive && node scripts/copy-content.mjs",
-    "predev": "npm run sync-content",
+    "gen-posts-data": "node scripts/gen-posts-data.mjs",
+    "predev": "npm run gen-posts-data",
     "dev": "rspress dev",
-    "prebuild": "npm run sync-content",
+    "prebuild": "npm run gen-posts-data",
     "build": "rspress build",
     "preview": "rspress preview"
   },
