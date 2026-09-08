@@ -230,6 +230,39 @@ a.bl-tag:hover {
   color: var(--rp-c-text-3);
 }
 
+/* ---------- Post header (back link + meta) ---------- */
+.bl-post-header {
+  margin-bottom: 8px;
+}
+
+.bl-post-header__back {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--rp-c-text-3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.bl-post-header__back:hover {
+  color: var(--rp-c-brand);
+}
+
+.bl-post-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: var(--rp-c-text-3);
+}
+
+.bl-post-header__tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 /* ---------- Prev / next post navigation ---------- */
 .bl-post-nav {
   display: grid;
@@ -271,6 +304,93 @@ a.bl-tag:hover {
 .bl-post-nav__title {
   font-size: 0.9375rem;
   font-weight: 500;
+  color: var(--rp-c-brand);
+}
+
+/* ---------- About page ---------- */
+.bl-about-card {
+  padding: 22px 24px;
+  border: 1px solid var(--rp-c-divider-light);
+  border-radius: var(--rp-radius);
+  background: var(--rp-c-bg);
+}
+
+.bl-about-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.bl-about-card__title {
+  margin: 12px 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--rp-c-text-1);
+}
+
+.bl-about-card__desc {
+  margin: 8px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--rp-c-text-2);
+}
+
+.bl-about-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bl-about-flow__item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid var(--rp-c-divider-light);
+  border-radius: var(--rp-radius-small);
+  background: var(--rp-c-bg-soft);
+}
+
+.bl-about-flow__name {
+  font-weight: 600;
+  color: var(--rp-c-text-1);
+}
+
+.bl-about-flow__role {
+  font-size: 0.8125rem;
+  color: var(--rp-c-text-3);
+}
+
+.bl-about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bl-about-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 1px solid var(--rp-c-divider-light);
+  border-radius: var(--rp-radius-small);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.bl-about-link:hover {
+  border-color: var(--rp-c-brand);
+  box-shadow: var(--rp-shadow-1);
+}
+
+.bl-about-link__label {
+  font-weight: 600;
+  color: var(--rp-c-text-1);
+}
+
+.bl-about-link__value {
+  font-size: 0.875rem;
   color: var(--rp-c-brand);
 }
 

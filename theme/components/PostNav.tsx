@@ -1,29 +1,17 @@
-import React, { useMemo } from 'react'
-import { useLocation } from '@rspress/core/runtime'
-import { usePosts } from '../lib/usePosts'
+import React from 'react'
+import { useCurrentPost, usePosts } from '../lib/usePosts'
 
 /**
  * Prev/next post navigation, injected into the `afterDocContent` Layout slot.
- * Slots render outside the page context, so the current route is read via
- * `useLocation()`. Renders only on individual post pages.
+ * Renders only on individual post pages.
  */
 export const PostNav: React.FC = () => {
-  const { pathname } = useLocation()
   const posts = usePosts()
+  const current = useCurrentPost()
+  if (!current) return null
 
-  // 生产模式 pathname 带 `.html` 后缀（/posts/foo.html），routePath 不带
-  const routePath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/'
-  const isPost = routePath.startsWith('/posts/') && routePath !== '/posts'
-
-  const currentIndex = useMemo(
-    () => (isPost ? posts.findIndex((p) => p.url.replace(/\/$/, '') === routePath) : -1),
-    [isPost, posts, routePath],
-  )
-
-  if (!isPost || currentIndex < 0) return null
-
-  const prevPost = posts[currentIndex + 1]
-  const nextPost = posts[currentIndex - 1]
+  const prevPost = posts[current.index + 1]
+  const nextPost = posts[current.index - 1]
 
   if (!prevPost && !nextPost) return null
 

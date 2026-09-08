@@ -24,6 +24,8 @@ export function postsDataPlugin(): RspressPlugin {
       const { routePath } = pageData
       if (!routePath.startsWith('/posts/') || routePath === '/posts/') return
       pageData.frontmatter.readingTime = getReadingTime(pageData.content)
+      // 文章页不显示空 sidebar（官方博客做法），去掉左侧竖线
+      pageData.frontmatter.sidebar = false
     },
   }
 }

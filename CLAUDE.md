@@ -27,24 +27,26 @@ docs/
 ├── about.md                # 关于页（默认 doc 排版）
 └── public/                 # 静态资源
 plugins/
-└── posts-data.ts           # 本地 Rspress 插件：extendPageData 注入 frontmatter.readingTime
+└── posts-data.ts           # 本地 Rspress 插件：extendPageData 注入 readingTime + sidebar: false
 theme/
-├── index.tsx               # 主题入口：export * theme-original + Layout slot 覆盖
+├── index.tsx               # 主题入口：export * theme-original + Layout/DocLayout slot 覆盖
 ├── index.css               # 纯 CSS 变量覆盖（--rp-c-*/--rp-radius/--rp-shadow-*）+ bl-* 组件类
 ├── lib/
-│   └── usePosts.ts         # 文章数据 hook：封装官方 usePages()，过滤/映射/排序
+│   └── usePosts.ts         # 文章数据 hook：usePosts() 列表 + useCurrentPost() 当前文章
 └── components/             # React 组件
     ├── HomeLayout.tsx      # 首页（hero frontmatter + 最新 6 篇，pageType: home 自动拾取）
     ├── PostsLayout/        # 文章归档页
     ├── TagsLayout/         # 标签聚合页
+    ├── AboutLayout/        # 关于页
     ├── PostCard.tsx        # 文章卡片
+    ├── PostHeader.tsx      # 文章页头：返回链接 + 日期/时长/标签（DocLayout beforeDocContent slot）
     └── PostNav.tsx         # 文章上下篇导航（Layout afterDocContent slot 注入）
 ```
 
 ### 数据流
 
 1. Rspress 构建期生成内置 `virtual-page-data` 模块，包含所有页面的 routePath/title/description/frontmatter
-2. `plugins/posts-data.ts` 的 `extendPageData` 钩子在构建期为文章页注入 `frontmatter.readingTime`
+2. `plugins/posts-data.ts` 的 `extendPageData` 钩子在构建期为文章页注入 `frontmatter.readingTime` 和 `sidebar: false`（隐藏空 sidebar 竖线）
 3. 客户端组件通过 `theme/lib/usePosts.ts`（封装官方 `usePages()`）获取文章列表：过滤 `/posts/`、排除草稿、按日期降序
 4. 首页 `HomeLayout` 取前 6 篇为最新文章列表
 

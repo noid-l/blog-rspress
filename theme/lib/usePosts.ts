@@ -1,4 +1,4 @@
-import { usePages } from '@rspress/core/runtime'
+import { useLocation, usePages } from '@rspress/core/runtime'
 
 export interface PostItem {
   title: string
@@ -42,4 +42,22 @@ export function usePosts(): PostItem[] {
       category: page.frontmatter.category as string | undefined,
     }))
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
+}
+
+/**
+ * Normalizes the current location to a routePath and returns the matching
+ * post with its index in the date-sorted list. Returns null outside
+ * individual post pages. Production pathnames carry a `.html` suffix, which
+ * is stripped before matching.
+ */
+export function useCurrentPost(): { post: PostItem; index: number } | null {
+  const { pathname } = useLocation()
+  const posts = usePosts()
+
+  const routePath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/'
+  if (!routePath.startsWith('/posts/') || routePath === '/posts') return null
+
+  const index = posts.findIndex((p) => p.url.replace(/\/$/, '') === routePath)
+  if (index < 0) return null
+  return { post: posts[index], index }
 }
