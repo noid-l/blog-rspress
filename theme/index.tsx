@@ -28,6 +28,4 @@ export function DocLayout(props: DocLayoutProps) {
 }
 
 export { HomeLayout } from './components/HomeLayout'
-export { PostsLayout } from './components/PostsLayout'
-export { TagsLayout } from './components/TagsLayout'
 export { AboutLayout } from './components/AboutLayout'

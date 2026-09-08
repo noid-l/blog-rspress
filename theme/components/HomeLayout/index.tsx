@@ -28,7 +28,7 @@ export const HomeLayout: React.FC = () => {
             <h2 className="bl-section__title">最新文章</h2>
             <p className="bl-section__copy">记录 AI、开发、工具链和项目实践</p>
           </div>
-          <a href="/posts/" className="bl-link-more">
+          <a href="/blog/" className="bl-link-more">
             查看全部 →
           </a>
         </div>

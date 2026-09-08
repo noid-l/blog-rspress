@@ -15,8 +15,8 @@ export const PostHeader: React.FC = () => {
 
   return (
     <div className="bl-post-header">
-      <Link href="/posts/" className="bl-post-header__back">
-        ← 返回文章列表
+      <Link href="/blog/" className="bl-post-header__back">
+        ← 返回博客列表
       </Link>
       <div className="bl-post-header__meta">
         {post.category && <span className="bl-category">{post.category}</span>}

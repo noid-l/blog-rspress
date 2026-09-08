@@ -19,7 +19,7 @@ function formatDate(value: unknown): string {
 /**
  * Reads the post list from Rspress's built-in runtime page data
  * (`virtual-page-data`) via the official `usePages()` hook. Posts are pages
- * under `/posts/`; the listing page itself and drafts are excluded.
+ * under `/blog/`; the listing page itself and drafts are excluded.
  * `readingTime` is injected at build time by `plugins/posts-data.ts`.
  */
 export function usePosts(): PostItem[] {
@@ -28,8 +28,8 @@ export function usePosts(): PostItem[] {
   return pages
     .filter(
       (page) =>
-        page.routePath.startsWith('/posts/') &&
-        page.routePath !== '/posts/' &&
+        page.routePath.startsWith('/blog/') &&
+        page.routePath !== '/blog/' &&
         page.frontmatter.draft !== true,
     )
     .map((page) => ({
@@ -55,7 +55,7 @@ export function useCurrentPost(): { post: PostItem; index: number } | null {
   const posts = usePosts()
 
   const routePath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/'
-  if (!routePath.startsWith('/posts/') || routePath === '/posts') return null
+  if (!routePath.startsWith('/blog/') || routePath === '/blog') return null
 
   const index = posts.findIndex((p) => p.url.replace(/\/$/, '') === routePath)
   if (index < 0) return null

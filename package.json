@@ -11,7 +11,8 @@
   "dependencies": {
     "@rspress/core": "^2.0.21",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "rspress-plugin-blog-list": "^1.2.0"
   },
   "devDependencies": {
     "@rspress/plugin-rss": "^2.0.21",

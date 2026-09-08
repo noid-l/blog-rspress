@@ -1,5 +1,6 @@
 import { defineConfig } from '@rspress/core'
 import { pluginRss } from '@rspress/plugin-rss'
+import { pluginBlogList } from 'rspress-plugin-blog-list'
 import dotenv from '@shikijs/langs/dotenv'
 import { postsDataPlugin } from './plugins/posts-data'
 
@@ -10,14 +11,15 @@ export default defineConfig({
   themeDir: 'theme',
   plugins: [
     postsDataPlugin(),
+    pluginBlogList(),
     pluginRss({
       siteUrl: 'https://www.myls.top',
       feed: {
         id: 'feed',
-        // 只收录 /posts/ 下的文章页，排除列表页本身和草稿
+        // 只收录 /blog/ 下的文章页，排除列表页本身和草稿
         test: (item) =>
-          item.routePath.startsWith('/posts/') &&
-          item.routePath !== '/posts/' &&
+          item.routePath.startsWith('/blog/') &&
+          item.routePath !== '/blog/' &&
           !item.frontmatter.draft,
         title: '不想起名字',
         description: 'AI / Coding / Notes',
@@ -50,8 +52,7 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: '文章', link: '/posts/' },
-      { text: '标签', link: '/tags' },
+      { text: '博客', link: '/blog/' },
       { text: '关于', link: '/about' },
     ],
     socialLinks: [
