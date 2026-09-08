@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFrontmatter } from '@rspress/core/runtime'
+import { HomeFooter } from '@rspress/core/theme-original'
 import { usePosts } from '../../lib/usePosts'
 import { PostCard } from '../PostCard'
 
@@ -48,6 +49,8 @@ export const HomeLayout: React.FC = () => {
           ))}
         </div>
       </section>
+
+      <HomeFooter />
     </div>
   )
 }

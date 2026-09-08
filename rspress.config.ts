@@ -56,7 +56,7 @@ export default defineConfig({
       { text: '关于', link: '/about' },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/noid-l', mode: 'link' },
+      { icon: 'github', content: 'https://github.com/noid-l', mode: 'link' },
     ],
     footer: {
       message: `
@@ -65,9 +65,9 @@ export default defineConfig({
           <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37011202002577" target="_blank" rel="noopener noreferrer" style="color:var(--rp-c-text-2);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
             <img src="/beian.png" alt="公安备案" style="width:14px;height:14px" />鲁公网安备37011202002577号
           </a>
+          <span style="color:var(--rp-c-text-3)">Copyright © ${new Date().getFullYear()} · Built with Rspress</span>
         </span>
       `,
-      copyright: `Copyright © ${new Date().getFullYear()} · Built with Rspress`,
     },
   },
 
