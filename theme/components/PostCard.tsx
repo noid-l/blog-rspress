@@ -20,18 +20,18 @@ export const PostCard: React.FC<PostCardProps> = ({
   category,
 }) => {
   return (
-    <a href={url} className="blog-post-card">
-      <h3 className="blog-post-card__title">{title}</h3>
-      <div className="blog-post-card__meta">
-        {category && <span className="blog-category-chip">{category}</span>}
-        {date}
-        {readingTime ? ` · ${readingTime} 分钟` : ''}
+    <a href={url} className="bl-post-card">
+      <div className="bl-post-card__meta">
+        {category && <span className="bl-category">{category}</span>}
+        <span>{date}</span>
+        {readingTime ? <span>· {readingTime} 分钟</span> : null}
       </div>
-      {description && <p className="blog-post-card__desc">{description}</p>}
+      <h3 className="bl-post-card__title">{title}</h3>
+      {description && <p className="bl-post-card__desc">{description}</p>}
       {tags && tags.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="bl-post-card__tags">
           {tags.map((tag) => (
-            <span key={tag} className="blog-tag">
+            <span key={tag} className="bl-tag">
               {tag}
             </span>
           ))}

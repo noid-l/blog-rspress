@@ -4,28 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "gen-posts-data": "node scripts/gen-posts-data.mjs",
-    "predev": "npm run gen-posts-data",
     "dev": "rspress dev",
-    "prebuild": "npm run gen-posts-data",
     "build": "rspress build",
     "preview": "rspress preview"
   },
   "dependencies": {
     "@rspress/core": "^2.0.21",
-    "gray-matter": "^4.0.3",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "zod": "^4.4.3"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@rspress/plugin-rss": "^2.0.21",
-    "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
-    "fast-glob": "^3.3.3",
-    "postcss": "^8.5.26",
     "typescript": "^5.8.3"
   }
 }

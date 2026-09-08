@@ -1,4 +1,6 @@
-# 关于
+---
+title: 关于
+---
 
 我是一个偏工程实践路线的开发者，关注这些方向：
 
@@ -10,7 +12,6 @@
 这个博客使用：
 
 - Obsidian 写作
-- Codex 辅助创作与改稿
-- VitePress 构建
-- Tailwind 美化
+- AI 辅助创作与改稿
+- Rspress 构建
 - ESA Pages 部署
