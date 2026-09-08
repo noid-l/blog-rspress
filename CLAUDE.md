@@ -20,7 +20,7 @@ npm run preview      # 预览构建产物（Pagefind 搜索仅在 preview 可用
 
 ```
 docs/
-├── index.mdx               # 首页（pageType: home，hero 文案在 frontmatter）
+├── index.mdx               # 首页（官方 pageType: home，hero/features 全在 frontmatter）
 ├── blog/                   # 博客文章（直接在此维护，命名 YYYY-MM-DD-slug.md）
 │   └── index.mdx           # 博客列表页（doc-wide + <BlogList />，rspress-plugin-blog-list）
 ├── about.mdx               # 关于页（pageType: custom → AboutLayout）
@@ -33,9 +33,7 @@ theme/
 ├── lib/
 │   └── usePosts.ts         # 文章数据 hook：usePosts() 列表 + useCurrentPost() 当前文章
 └── components/             # React 组件
-    ├── HomeLayout/         # 首页（hero frontmatter + 最新 6 篇，pageType: home 自动拾取）
     ├── AboutLayout/        # 关于页
-    ├── PostCard.tsx        # 文章卡片（仅首页使用）
     ├── PostHeader.tsx      # 文章页头：返回链接 + 日期/时长/标签（DocLayout beforeDocContent slot）
     └── PostNav.tsx         # 文章上下篇导航（Layout afterDocContent slot 注入）
 ```
@@ -44,14 +42,15 @@ theme/
 
 1. Rspress 构建期生成内置 `virtual-page-data` 模块，包含所有页面的 routePath/title/description/frontmatter
 2. `plugins/posts-data.ts` 的 `extendPageData` 钩子在构建期为文章页注入 `frontmatter.readingTime` 和 `sidebar: false`（隐藏空 sidebar 竖线）
-3. 客户端组件通过 `theme/lib/usePosts.ts`（封装官方 `usePages()`）获取文章列表：过滤 `/blog/`、排除草稿、按日期降序
-4. 首页 `HomeLayout` 取前 6 篇为最新文章列表；`/blog/` 列表页由 `rspress-plugin-blog-list` 的 `<BlogList />` 渲染
+3. 文章页组件通过 `theme/lib/usePosts.ts`（封装官方 `usePages()`）获取文章列表：过滤 `/blog/`、排除草稿、按日期降序
+4. 首页完全由官方 `pageType: home` 渲染（hero + features + HomeFooter），`/blog/` 列表页由 `rspress-plugin-blog-list` 的 `<BlogList />` 渲染
 
 ### 主题定制约定
 
 - 只通过 CSS 变量（`--rp-c-brand` 等）和 BEM 类覆盖定制官方主题，不 eject 内置组件
 - 自定义组件类统一 `bl-` 前缀，纯 CSS 书写（无 Tailwind、无构建期 CSS 框架）
-- `theme/index.tsx` 保持 `export * from '@rspress/core/theme-original'`，仅覆盖 `Layout` 和 `HomeLayout`
+- `theme/index.tsx` 保持 `export * from '@rspress/core/theme-original'`，仅覆盖 `Layout`（注入 PostNav）和 `DocLayout`（注入 PostHeader）
+- 首页不覆盖 HomeLayout——覆盖后 hero/features frontmatter 会失效
 
 ### 样式系统
 

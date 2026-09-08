@@ -27,5 +27,4 @@ export function DocLayout(props: DocLayoutProps) {
   )
 }
 
-export { HomeLayout } from './components/HomeLayout'
 export { AboutLayout } from './components/AboutLayout'
